@@ -8,7 +8,7 @@ import com.userManagementSystem.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;  // javax au lieu de jakarta
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,7 +36,6 @@ public class UserService {
     }
 
     public UserResponseDTO save(UserRequestDTO userRequest) {
-        // Vérifier si l'email existe déjà
         if (repo.existsByEmail(userRequest.getEmail())) {
             throw new RuntimeException("Email already exists: " + userRequest.getEmail());
         }
